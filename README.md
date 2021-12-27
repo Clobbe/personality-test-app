@@ -25,4 +25,4 @@ This app is an implementation of the requested Personality-Test-app.
 
 9. If everything worked out, you should now see the application running at [http://localhost:3000](http://localhost:3000)
 
-Enjoy and have fun figure out if you're most likely Extro- or Introvert =)
+# Enjoy and have fun figure out if you're most likely Extro- or Introvert =) 🌟
