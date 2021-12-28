@@ -133,7 +133,4 @@ async def read_root() -> dict:
             ]
         },
     ]
-    return {
-        'status_code':200,
-        'QnAs': questions_and_answers
-        }
+    return (questions_and_answers)
