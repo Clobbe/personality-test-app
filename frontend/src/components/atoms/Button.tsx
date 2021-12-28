@@ -5,6 +5,8 @@ interface IButton extends React.HTMLProps<HTMLButtonElement> {}
 
 const StyledButton = styled.button`
   min-width: 200px;
+  margin-top: 50px;
+  float: right;
   padding: 10px 5px 10px 5px;
   background-color: #6faf08;
   outline: 0;
