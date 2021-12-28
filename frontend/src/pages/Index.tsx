@@ -1,5 +1,7 @@
-import React from "react";
 import { Container, Row, Col } from "react-grid-system";
+import Button from "../components/atoms/Button";
+import Card from "../components/atoms/Card";
+
 /*
 
     TODO :: svg icons for "are you intro / extro"
@@ -11,6 +13,21 @@ import { Container, Row, Col } from "react-grid-system";
 
  */
 
-const Index = () => {};
+const Index = () => {
+  return (
+    <Container>
+      <Card>
+        <Row>
+          <Col>Index Page</Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button>Next</Button>
+          </Col>
+        </Row>
+      </Card>
+    </Container>
+  );
+};
 
 export default Index;
