@@ -1,7 +1,9 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
 
-interface IButton extends React.HTMLProps<HTMLButtonElement> {}
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onClick?: () => void;
+}
 
 const StyledButton = styled.button`
   min-width: 200px;
@@ -23,9 +25,9 @@ const StyledButtonText = styled.div`
   color: #fff;
 `;
 
-const Button: VFC<IButton> = ({ children }) => {
+const Button: VFC<IButton> = ({ onClick, children }) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={onClick}>
       <StyledButtonText>{children}</StyledButtonText>
     </StyledButton>
   );

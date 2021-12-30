@@ -10,6 +10,7 @@ function App() {
       <Row>
         <Col>
           <h1>Personality Test App</h1>
+          <h3>Are you 😶 (introvert) or 🤩 (extrovert)</h3>
         </Col>
       </Row>
       <Row>
