@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Container, Row, Col } from "react-grid-system";
 import Index from "./pages/Index";
 import Questionaire from "./pages/Questionaire";
@@ -10,16 +10,22 @@ function App() {
       <Row>
         <Col>
           <h1>Personality Test App</h1>
-          <h3>Are you 😶 (introvert) or 🤩 (extrovert)</h3>
+          <h3>Are you 🤩 (extrovert) or 😶 (introvert)</h3>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/questionaire" element={<Questionaire />} />
-            <Route path="/result" element={<Result />} />
-          </Routes>
+          <Switch>
+            <Route exact path="/">
+              <Index />
+            </Route>
+            <Route path="/questionaire">
+              <Questionaire />
+            </Route>
+            <Route path="/result">
+              <Result />
+            </Route>
+          </Switch>
         </Col>
       </Row>
     </Container>
