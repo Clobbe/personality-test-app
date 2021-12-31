@@ -4,14 +4,6 @@ import { useHistory } from "react-router-dom";
 import Card from "../components/atoms/Card";
 import OptionButton from "../components/atoms/OptionButton";
 
-/* 
-    //TODO :: add fetching of questions from backend-api
-    //TODO :: add pagination between questions dependent on amount of questions
-    //TODO :: implement function to calculate score
-    //TODO :: add form with RadioButtons to select question - use large buttons
-    //TODO :: add :hover + :selected effects on buttons
-    */
-
 const Questionaire = () => {
   const questionsAndAnswersFromBackend = [
     {
@@ -137,11 +129,10 @@ const Questionaire = () => {
   const [pageIndex, updatePageIndex] = useState(0);
   const [score, setScore] = useState(0);
   const history = useHistory();
-  console.log("questions.length:", questions.length);
-
   const updateScoreHandler = (optionValue: number) => {
     let s = score + optionValue;
     setScore(s);
+    console.log(score);
     if (pageIndex === questions.length - 1) {
       history.push({
         pathname: "/result",
@@ -154,7 +145,6 @@ const Questionaire = () => {
       console.log("pageIndex:", pageIndex);
     }
   };
-
   return (
     <Container>
       <Card>

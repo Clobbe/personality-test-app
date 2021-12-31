@@ -21,7 +21,7 @@ const StyledScorePoint = styled.div<Props>`
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  margin-left: ${({ score }) => (score ? 400 / score : 0)}px;
+  margin-left: ${({ score }) => (score > 12 ? 400 - score : 10 * score)}px;
   background-color: #6faf08;
   border: 2px solid #fff;
 `;

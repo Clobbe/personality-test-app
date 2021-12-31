@@ -3,16 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "../components/atoms/Button";
 import Card from "../components/atoms/Card";
 
-/*
-
-    //TODO :: icons for "are you intro / extro"
-    //TODO :: add introductionary text
-    //TODO :: add "get started"-button
-    //TODO :: create button-component to reuse
-    //TODO :: create paper-component to frame the content
-
- */
-
 const Index = () => {
   return (
     <Container>
