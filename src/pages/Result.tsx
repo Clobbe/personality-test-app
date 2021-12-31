@@ -10,7 +10,6 @@ type LocationState = {
 const Results = () => {
   const location = useLocation();
   const questionScore = (location.state as LocationState).score;
-  console.log("questionScore", questionScore);
   return (
     <Container>
       <Card>
@@ -18,7 +17,7 @@ const Results = () => {
           <Col>
             Great! <br />
             You seems to lean more towards being a
-            {questionScore < 14 ? " extroverted" : " introverted"} kind of
+            {questionScore < 300 ? " extroverted" : " introverted"} kind of
             person
           </Col>
         </Row>

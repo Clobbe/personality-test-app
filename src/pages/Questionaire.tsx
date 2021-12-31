@@ -12,21 +12,21 @@ const Questionaire = () => {
       options: [
         {
           answer: "Don’t dare to interrupt them",
-          value: 4,
+          weight: 100,
         },
         {
           answer:
             "Think it’s more important to give them some of your time; work can wait",
-          value: 3,
+          weight: 75,
         },
         {
           answer: "Listen, but with only with half an ear",
-          value: 2,
+          weight: 50,
         },
         {
           answer:
             "Interrupt and explain that you are really busy at the moment ",
-          value: 1,
+          weight: 10,
         },
       ],
     },
@@ -36,21 +36,21 @@ const Questionaire = () => {
       options: [
         {
           answer: "Bubble with inner anger, but keep quiet",
-          value: 4,
+          weight: 100,
         },
         {
           answer: "Look at your watch every two minutes ",
-          value: 3,
+          weight: 75,
         },
         {
           answer:
             "Explain to other equally impatient people in the room that the doctor is always running late",
-          value: 2,
+          weight: 50,
         },
         {
           answer:
             "Complain in a loud voice, while tapping your foot impatiently",
-          value: 1,
+          weight: 0,
         },
       ],
     },
@@ -60,19 +60,19 @@ const Questionaire = () => {
       options: [
         {
           answer: "Don’t dare contradict them",
-          value: 4,
+          weight: 100,
         },
         {
           answer: "Think that they are obviously right ",
-          value: 3,
+          weight: 75,
         },
         {
           answer: "Defend your own point of view, tooth and nail ",
-          value: 2,
+          weight: 50,
         },
         {
           answer: "Continuously interrupt your colleague",
-          value: 1,
+          weight: 10,
         },
       ],
     },
@@ -82,42 +82,20 @@ const Questionaire = () => {
         {
           answer:
             "Are a bit too far towards the back so don’t really hear what the guide is saying ",
-          value: 4,
+          weight: 100,
         },
         {
           answer: "Follow the group without question",
-          value: 3,
+          weight: 75,
         },
         {
           answer: "Make sure that everyone is able to hear properly",
-          value: 2,
+          weight: 50,
         },
         {
           answer:
             "Are right up the front, adding your own comments in a loud voice ",
-          value: 1,
-        },
-      ],
-    },
-    {
-      question:
-        "You crack a joke at work, but nobody seems to have noticed. You:",
-      options: [
-        {
-          answer: "Think it’s for the best — it was a lame joke anyway",
-          value: 4,
-        },
-        {
-          answer: "Wait to share it with your friends after work",
-          value: 3,
-        },
-        {
-          answer: "Try again a bit later with one of your colleagues",
-          value: 2,
-        },
-        {
-          answer: "Keep telling it until they pay attention",
-          value: 1,
+          weight: 0,
         },
       ],
     },
@@ -129,10 +107,9 @@ const Questionaire = () => {
   const [pageIndex, updatePageIndex] = useState(0);
   const [score, setScore] = useState(0);
   const history = useHistory();
-  const updateScoreHandler = (optionValue: number) => {
-    let s = score + optionValue;
+  const updateScoreHandler = (weight: number) => {
+    const s = score + weight;
     setScore(s);
-    console.log(score);
     if (pageIndex === questions.length - 1) {
       history.push({
         pathname: "/result",
@@ -142,7 +119,6 @@ const Questionaire = () => {
       });
     } else {
       updatePageIndex(pageIndex + 1);
-      console.log("pageIndex:", pageIndex);
     }
   };
   return (
@@ -162,14 +138,18 @@ const Questionaire = () => {
         <Row>
           <Col>
             <OptionButton
-              onClick={() => updateScoreHandler(answers[pageIndex][0]["value"])}
+              onClick={() =>
+                updateScoreHandler(answers[pageIndex][0]["weight"])
+              }
             >
               {answers[pageIndex][0]["answer"]}
             </OptionButton>
           </Col>
           <Col>
             <OptionButton
-              onClick={() => updateScoreHandler(answers[pageIndex][1]["value"])}
+              onClick={() =>
+                updateScoreHandler(answers[pageIndex][1]["weight"])
+              }
             >
               {answers[pageIndex][1]["answer"]}
             </OptionButton>
@@ -178,14 +158,18 @@ const Questionaire = () => {
         <Row>
           <Col>
             <OptionButton
-              onClick={() => updateScoreHandler(answers[pageIndex][2]["value"])}
+              onClick={() =>
+                updateScoreHandler(answers[pageIndex][2]["weight"])
+              }
             >
               {answers[pageIndex][2]["answer"]}
             </OptionButton>
           </Col>
           <Col>
             <OptionButton
-              onClick={() => updateScoreHandler(answers[pageIndex][3]["value"])}
+              onClick={() =>
+                updateScoreHandler(answers[pageIndex][3]["weight"])
+              }
             >
               {answers[pageIndex][3]["answer"]}
             </OptionButton>
