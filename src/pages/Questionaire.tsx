@@ -107,6 +107,7 @@ const Questionaire = () => {
   const [pageIndex, updatePageIndex] = useState(0);
   const [score, setScore] = useState(0);
   const history = useHistory();
+
   const updateScoreHandler = (weight: number) => {
     const s = score + weight;
     setScore(s);
