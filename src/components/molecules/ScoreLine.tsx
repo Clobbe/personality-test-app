@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `;
 const StyledLine = styled.div`
   display: flex;
-  width: 100%;
+  width: 400px;
   height: 3px;
   background-color: #000;
 `;
@@ -21,7 +21,7 @@ const StyledScorePoint = styled.div<Props>`
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  margin-left: ${({ score }) => score}px;
+  margin-left: ${({ score }) => 400 - score}px;
   background-color: #6faf08;
   border: 2px solid #fff;
 `;
@@ -44,8 +44,8 @@ const ScoreLine: VFC<Props> = ({ score = 0 }) => {
       <StyledLine>
         <StyledScorePoint score={score} />
       </StyledLine>
-      <StyledExtremeValueLeft>🤩 Extrovert</StyledExtremeValueLeft>
-      <StyledExtremeValueRight>😶 Introvert</StyledExtremeValueRight>
+      <StyledExtremeValueLeft>😶 Introvert</StyledExtremeValueLeft>
+      <StyledExtremeValueRight>🤩 Extrovert</StyledExtremeValueRight>
     </Wrapper>
   );
 };
