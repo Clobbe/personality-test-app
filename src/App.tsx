@@ -7,6 +7,8 @@ import Result from "./pages/Result";
 import { VFC } from "react";
 
 const App: VFC = () => {
+  //TODO :: add auto test with Playfair ??
+  //TODO :: refactor "componentify" this instead...
   return (
     <>
       <Container>

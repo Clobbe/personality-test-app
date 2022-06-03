@@ -5,6 +5,10 @@ import Card from "../components/atoms/Card";
 import OptionButton from "../components/atoms/OptionButton";
 
 const Questionaire = () => {
+  //TODO :: refactor this to take an object / "simulate" an api.
+  //TODO :: refactor into using component composition instead
+  //TODO :: refactor score-keeping to use a context instead
+  // -- export a function from the context instead...
   const questionsAndAnswersFromBackend = [
     {
       question:
@@ -12,23 +16,23 @@ const Questionaire = () => {
       options: [
         {
           answer: "Don’t dare to interrupt them",
-          weight: 100,
+          weight: 100
         },
         {
           answer:
             "Think it’s more important to give them some of your time; work can wait",
-          weight: 75,
+          weight: 75
         },
         {
           answer: "Listen, but with only with half an ear",
-          weight: 50,
+          weight: 50
         },
         {
           answer:
             "Interrupt and explain that you are really busy at the moment ",
-          weight: 10,
-        },
-      ],
+          weight: 10
+        }
+      ]
     },
     {
       question:
@@ -36,23 +40,23 @@ const Questionaire = () => {
       options: [
         {
           answer: "Bubble with inner anger, but keep quiet",
-          weight: 100,
+          weight: 100
         },
         {
           answer: "Look at your watch every two minutes ",
-          weight: 75,
+          weight: 75
         },
         {
           answer:
             "Explain to other equally impatient people in the room that the doctor is always running late",
-          weight: 50,
+          weight: 50
         },
         {
           answer:
             "Complain in a loud voice, while tapping your foot impatiently",
-          weight: 0,
-        },
-      ],
+          weight: 0
+        }
+      ]
     },
     {
       question:
@@ -60,21 +64,21 @@ const Questionaire = () => {
       options: [
         {
           answer: "Don’t dare contradict them",
-          weight: 100,
+          weight: 100
         },
         {
           answer: "Think that they are obviously right ",
-          weight: 75,
+          weight: 75
         },
         {
           answer: "Defend your own point of view, tooth and nail ",
-          weight: 50,
+          weight: 50
         },
         {
           answer: "Continuously interrupt your colleague",
-          weight: 10,
-        },
-      ],
+          weight: 10
+        }
+      ]
     },
     {
       question: "You are taking part in a guided tour of a museum. You:",
@@ -82,23 +86,23 @@ const Questionaire = () => {
         {
           answer:
             "Are a bit too far towards the back so don’t really hear what the guide is saying ",
-          weight: 100,
+          weight: 100
         },
         {
           answer: "Follow the group without question",
-          weight: 75,
+          weight: 75
         },
         {
           answer: "Make sure that everyone is able to hear properly",
-          weight: 50,
+          weight: 50
         },
         {
           answer:
             "Are right up the front, adding your own comments in a loud voice ",
-          weight: 0,
-        },
-      ],
-    },
+          weight: 0
+        }
+      ]
+    }
   ];
   const questions = questionsAndAnswersFromBackend.map(
     (item) => item["question"]
@@ -115,8 +119,8 @@ const Questionaire = () => {
       history.push({
         pathname: "/result",
         state: {
-          score: score,
-        },
+          score: score
+        }
       });
     } else {
       updatePageIndex(pageIndex + 1);

@@ -10,6 +10,9 @@ type LocationState = {
 const Results = () => {
   const location = useLocation();
   const questionScore = (location.state as LocationState).score;
+  //?? :: add animation to display the result?
+  //TODO :: refactor do pull score from context instead of as req-params...
+
   return (
     <Container>
       <Card>
