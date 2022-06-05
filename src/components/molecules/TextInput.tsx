@@ -1,15 +1,12 @@
-import React, { VFC } from 'react';
-import styled, { css } from 'styled-components';
-import { useTranslation } from '../../contexts/translationContext';
-import { theme } from '../../utils/theme';
-import { IconVariants } from '../atoms/icons/types';
-import Spacing from '../atoms/Spacing';
-import SvgIcon from '../atoms/SvgIcon';
-import Typography, { ITranslation } from '../atoms/Typography';
+import React, { VFC } from "react";
+import styled, { css } from "styled-components";
+import { theme } from "../../utils/theme";
+import Spacing from "../atoms/Spacing";
+import Typography from "../atoms/Typography";
 
-type FieldVariant = 'text' | 'email';
+type FieldVariant = "text" | "email";
 
-interface Props extends React.HTMLProps<HTMLInputElement>, ITranslation {
+interface Props extends React.HTMLProps<HTMLInputElement> {
   title?: string;
   active?: boolean;
   borderColor?: string;
@@ -18,12 +15,10 @@ interface Props extends React.HTMLProps<HTMLInputElement>, ITranslation {
   error?: string;
   placeholder?: string;
   placeholderParams?: string;
-  icon?: IconVariants;
 }
 
 interface IStyledTextInput
-  extends React.HTMLProps<HTMLInputElement | HTMLDivElement>,
-    ITranslation {
+  extends React.HTMLProps<HTMLInputElement | HTMLDivElement> {
   borderColor?: string;
   disabled?: boolean;
   error?: string;
@@ -89,38 +84,21 @@ const TextInput: VFC<Props> = ({
   disabled,
   mandatory = false,
   error,
-  onChange,
-  icon,
+  onChange
 }) => {
-  const { translate } = useTranslation();
-  const translatedPlaceholder = placeholder && translate(placeholder, null);
   return (
     <>
-      <Typography translateKey={title} variant="input-label">
+      <Typography variant="input-label">
         {mandatory ? `${title} *` : title}
       </Typography>
       <StyledTextInputContainer error={error}>
         <StyledTextInput
           disabled={disabled}
           borderColor={borderColor}
-          placeholder={translatedPlaceholder}
+          placeholder={placeholder}
           onChange={onChange}
           error={error}
         />
-        {!!icon && !error && (
-          <SvgIcon
-            color={theme.colors.grey[100]}
-            icon={icon}
-            iconSize="small"
-          />
-        )}
-        {error && (
-          <SvgIcon
-            color={theme.colors.red[100]}
-            icon="cross"
-            iconSize="small"
-          />
-        )}
       </StyledTextInputContainer>
       {!!error && <Spacing />}
       {!!error && (

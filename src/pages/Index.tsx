@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-grid-system";
 import { Link } from "react-router-dom";
-import Button from "../components/atoms/Button";
 import Card from "../components/atoms/Card";
+import PrimaryButton from "../components/molecules/PrimaryButton";
 
 const Index = () => {
   return (
@@ -26,7 +26,7 @@ const Index = () => {
         <Row align="center">
           <Col>
             <Link to="/questionaire">
-              <Button>Get Started</Button>
+              <PrimaryButton>Get Started</PrimaryButton>
             </Link>
           </Col>
         </Row>

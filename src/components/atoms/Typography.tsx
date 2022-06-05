@@ -1,45 +1,37 @@
-import React, { VFC } from 'react';
-import styled, { css } from 'styled-components';
-import { useSettings } from '../../contexts/settingsContext';
-import { useTranslation } from '../../contexts/translationContext';
-import { theme } from '../../utils/theme';
+import React, { VFC } from "react";
+import styled, { css } from "styled-components";
+import { theme } from "../../utils/theme";
 
-export interface ITranslation {
-  translateKey?: string;
-  translateParams?: Record<string, unknown>;
-}
-
-type AlignmentVariant = 'left' | 'center' | 'right';
+type AlignmentVariant = "left" | "center" | "right";
 type TextVariant =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'p'
-  | 'p-semi-bold'
-  | 'body1'
-  | 'body1-semi-bold'
-  | 'body2'
-  | 'body2-extra-bold'
-  | 'body3'
-  | 'label-default'
-  | 'label-large'
-  | 'input-label'
-  | 'button'
-  | 'status-message'
-  | 'input-error'
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "p"
+  | "p-semi-bold"
+  | "body1"
+  | "body1-semi-bold"
+  | "body2"
+  | "body2-extra-bold"
+  | "body3"
+  | "label-default"
+  | "label-large"
+  | "input-label"
+  | "button"
+  | "status-message"
+  | "input-error"
   | undefined;
 
 interface ITypography
   extends React.HTMLProps<
-      | HTMLParagraphElement
-      | HTMLHeadingElement
-      | HTMLLabelElement
-      | HTMLParagraphElement
-    >,
-    ITranslation {
+    | HTMLParagraphElement
+    | HTMLHeadingElement
+    | HTMLLabelElement
+    | HTMLParagraphElement
+  > {
   variant?: TextVariant;
   color?: string;
   align?: AlignmentVariant;
@@ -177,43 +169,43 @@ const StyledInputError = styled.span<ITypography>`
 
 const getComponent = (variant: TextVariant): VFC => {
   switch (variant) {
-    case 'h1':
+    case "h1":
       return StyledH1;
-    case 'h2':
+    case "h2":
       return StyledH2;
-    case 'h3':
+    case "h3":
       return StyledH3;
-    case 'h4':
+    case "h4":
       return StyledH4;
-    case 'h5':
+    case "h5":
       return StyledH5;
-    case 'h6':
+    case "h6":
       return StyledH6;
-    case 'p':
+    case "p":
       return StyledParagraph;
-    case 'p-semi-bold':
+    case "p-semi-bold":
       return StyledParagraphSemiBold;
-    case 'body1':
+    case "body1":
       return StyledBody1;
-    case 'body1-semi-bold':
+    case "body1-semi-bold":
       return StyledBody1SemiBold;
-    case 'body2':
+    case "body2":
       return StyledBody2;
-    case 'body2-extra-bold':
+    case "body2-extra-bold":
       return StyledBody2ExtraBold;
-    case 'body3':
+    case "body3":
       return StyledBody3;
-    case 'label-default':
+    case "label-default":
       return StyledLabelDefault;
-    case 'label-large':
+    case "label-large":
       return StyledLabelLarge;
-    case 'input-label':
+    case "input-label":
       return StyledInputLabel;
-    case 'button':
+    case "button":
       return StyledButtonLabel;
-    case 'status-message':
+    case "status-message":
       return StyledStatusMessage;
-    case 'input-error':
+    case "input-error":
       return StyledInputError;
     default:
       return StyledBody1;
@@ -221,24 +213,15 @@ const getComponent = (variant: TextVariant): VFC => {
 };
 
 const Typography: React.FC<ITypography> = ({
-  translateKey,
-  translateParams,
   children,
-  variant = 'body1',
+  variant = "body1",
   ...props
 }) => {
   const Component = getComponent(variant);
-  const { fontFamily } = useSettings();
-  const { translate } = useTranslation();
   const typoProps = {
-    ...props,
-    fontFamily,
+    ...props
   };
 
-  return (
-    <Component {...typoProps}>
-      {translateKey ? translate(translateKey, translateParams) : children}
-    </Component>
-  );
+  return <Component {...typoProps}>{children}</Component>;
 };
 export default Typography;

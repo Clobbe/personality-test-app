@@ -1,14 +1,11 @@
-import React, { VFC } from 'react';
-import styled, { css } from 'styled-components';
-import { useSettings } from '../../contexts/settingsContext';
-import { theme } from '../../utils/theme';
-import Typography, { ITranslation } from '../atoms/Typography';
+import React, { VFC } from "react";
+import styled, { css } from "styled-components";
+import { theme } from "../../utils/theme";
+import Typography from "../atoms/Typography";
 
-interface Props
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ITranslation {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
-  radius?: string;
+  radius?: string | number;
 }
 
 const StyledButton = styled.button<Props>`
@@ -30,18 +27,10 @@ const StyledButton = styled.button<Props>`
     `}
 `;
 
-const SecondaryButton: VFC<Props> = ({
-  children,
-  translateKey,
-  translateParams,
-  ...props
-}) => {
-  const { cornerRadius } = useSettings();
+const SecondaryButton: VFC<Props> = ({ children, radius, ...props }) => {
   return (
-    <StyledButton radius={cornerRadius} {...props}>
+    <StyledButton radius={radius} {...props}>
       <Typography
-        translateKey={translateKey}
-        translateParams={translateParams}
         align="center"
         color={theme.colors.grey[100]}
         variant="button"
