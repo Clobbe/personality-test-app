@@ -11,6 +11,7 @@ const App: VFC = () => {
   return (
     <>
       <Container>
+        {/* TODO :: break out into a Heading-component */}
         <Row>
           <Col>
             <h1>Personality Test App</h1>

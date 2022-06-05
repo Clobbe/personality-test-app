@@ -1,9 +1,10 @@
 import { Container, Row, Col } from "react-grid-system";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Card from "../components/atoms/Card";
 import PrimaryButton from "../components/molecules/PrimaryButton";
 
 const Index = () => {
+  const history = useHistory();
   return (
     <Container>
       <Card>
@@ -25,9 +26,9 @@ const Index = () => {
         </Row>
         <Row align="center">
           <Col>
-            <Link to="/questionaire">
-              <PrimaryButton>Get Started</PrimaryButton>
-            </Link>
+            <PrimaryButton onClick={() => history.push("/questionaire")}>
+              Get Started
+            </PrimaryButton>
           </Col>
         </Row>
       </Card>
