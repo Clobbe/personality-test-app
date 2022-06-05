@@ -1,38 +1,19 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Container, Row, Col } from "react-grid-system";
-import Index from "./pages/Index";
-import Questionaire from "./pages/Questionaire";
-import Result from "./pages/Result";
+import { BrowserRouter } from "react-router-dom";
+import { Container, setConfiguration } from "react-grid-system";
 import { VFC } from "react";
+import { Header } from "./components/molecules/Header";
+import AppNavigator from "./navigation";
 
 const App: VFC = () => {
-  //TODO :: refactor "componentify" this instead...
+  setConfiguration({ gutterWidth: 24 });
   return (
     <>
       <Container>
-        {/* TODO :: break out into a Heading-component */}
-        <Row>
-          <Col>
-            <h1>Personality Test App</h1>
-            <h3>Are you 🤩 (extrovert) or 😶 (introvert)</h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Switch>
-              <Route exact path="/">
-                <Index />
-              </Route>
-              <Route path="/questionaire">
-                <Questionaire />
-              </Route>
-              <Route path="/result">
-                <Result />
-              </Route>
-            </Switch>
-          </Col>
-        </Row>
+        <Header />
+        <BrowserRouter>
+          <AppNavigator />
+        </BrowserRouter>
       </Container>
     </>
   );
