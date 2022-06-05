@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import { Container, setConfiguration } from "react-grid-system";
 import { VFC } from "react";
 import { Header } from "./components/molecules/Header";
@@ -11,9 +10,7 @@ const App: VFC = () => {
     <>
       <Container>
         <Header />
-        <BrowserRouter>
-          <AppNavigator />
-        </BrowserRouter>
+        <AppNavigator />
       </Container>
     </>
   );
