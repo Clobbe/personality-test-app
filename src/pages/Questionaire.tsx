@@ -5,10 +5,12 @@ import Card from "../components/atoms/Card";
 import OptionButton from "../components/atoms/OptionButton";
 
 const Questionaire = () => {
-  //TODO :: refactor this to take an object / "simulate" an api.
   //TODO :: refactor into using component composition instead
+  //TODO :: refactor this to fetch questions from context
   //TODO :: refactor score-keeping to use a context instead
   // -- export a function from the context instead...
+  //TODO :: add function to context to store score in Firebase
+
   const questionsAndAnswersFromBackend = [
     {
       question:

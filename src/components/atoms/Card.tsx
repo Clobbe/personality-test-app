@@ -7,9 +7,9 @@ interface ICard extends React.HTMLProps<HTMLDivElement> {
 
 const StyledCard = styled.div<ICard>`
   max-width: 800px;
-  margin: 10% auto auto;
+  margin: 10% auto;
   padding: 20px 50px 20px 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgb(186, 202, 168);
 `;
 

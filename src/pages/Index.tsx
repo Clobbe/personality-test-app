@@ -12,7 +12,6 @@ const Index = () => {
             <p>
               With this app you get to answer 5 questions that will tell if
               you're leaning more towards introverted ( 😶 ) or towards
-              {/* TODO :: refactor emojis to use fontawesome instead...*/}
               extroverted ( 🤩 ) kind of person. <br />
             </p>
             <p>

@@ -1,3 +1,4 @@
+import { VFC } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import { useLocation } from "react-router-dom";
 import Card from "../components/atoms/Card";
@@ -7,7 +8,7 @@ type LocationState = {
   score: number;
 };
 
-const Results = () => {
+const Results: VFC = () => {
   const location = useLocation();
   const questionScore = (location.state as LocationState).score;
   //?? :: add animation to display the result?
