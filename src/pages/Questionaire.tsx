@@ -1,9 +1,10 @@
 import React, { useState, VFC } from "react";
-import { Container, Row, Col } from "react-grid-system";
+import { Row, Col } from "react-grid-system";
 import { useHistory } from "react-router-dom";
 import Card from "../components/atoms/Card";
-import OptionButton from "../components/atoms/OptionButton";
+import Spacing from "../components/atoms/Spacing";
 import { AnswerOptions } from "../components/molecules/AnswerOptions";
+import PrimaryButton from "../components/molecules/PrimaryButton";
 import { QuestionHeader } from "../components/molecules/QuestionHeader";
 import { QuestionWithAnswers } from "../types";
 
@@ -112,7 +113,6 @@ const Questionaire: VFC = () => {
   const questions = questionsAndAnswersFromBackend.map(
     (item) => item["question"]
   );
-  const answers = questionsAndAnswersFromBackend.map((item) => item["options"]);
   const [pageIndex, updatePageIndex] = useState(0);
   const [score, setScore] = useState(0);
   const history = useHistory();
@@ -134,40 +134,19 @@ const Questionaire: VFC = () => {
   };
   return (
     <Card>
-      <QuestionHeader index={pageIndex} question={questions[pageIndex]} />
-      <AnswerOptions options={questionsAndAnswersFromBackend[0].options} />
-      {/* <Row align="center">
-        <Col>
-          <OptionButton
-            onClick={() => updateScoreHandler(answers[pageIndex][0]["weight"])}
-          >
-            {answers[pageIndex][0]["answer"]}
-          </OptionButton>
-        </Col>
-        <Col>
-          <OptionButton
-            onClick={() => updateScoreHandler(answers[pageIndex][1]["weight"])}
-          >
-            {answers[pageIndex][1]["answer"]}
-          </OptionButton>
-        </Col>
-      </Row>
       <Row>
         <Col>
-          <OptionButton
-            onClick={() => updateScoreHandler(answers[pageIndex][2]["weight"])}
-          >
-            {answers[pageIndex][2]["answer"]}
-          </OptionButton>
+          <QuestionHeader index={pageIndex} question={questions[pageIndex]} />
+          <AnswerOptions
+            onClick={() => {}}
+            options={questionsAndAnswersFromBackend[0].options}
+          />
         </Col>
-        <Col>
-          <OptionButton
-            onClick={() => updateScoreHandler(answers[pageIndex][3]["weight"])}
-          >
-            {answers[pageIndex][3]["answer"]}
-          </OptionButton>
-        </Col>
-      </Row> */}
+      </Row>
+      <Spacing spacing={5} />
+      <Row justify="end">
+        <PrimaryButton onClick={() => {}}>Next question</PrimaryButton>
+      </Row>
     </Card>
   );
 };

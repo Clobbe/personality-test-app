@@ -1,7 +1,7 @@
-import React, { VFC } from 'react';
-import styled, { css } from 'styled-components';
+import React, { VFC } from "react";
+import styled, { css } from "styled-components";
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+interface Props {
   spacing?: number;
   horizontal?: boolean;
 }

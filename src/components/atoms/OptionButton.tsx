@@ -1,6 +1,7 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
 import { theme } from "../../utils";
+import Typography from "./Typography";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value?: number;
@@ -21,16 +22,10 @@ const StyledButton = styled.button<Props>`
   }
 `;
 
-const StyledButtonText = styled.div`
-  font-family: ${theme.font};
-  size: 16px;
-  color: ${theme.colors.grey[80]};
-`;
-
 const OptionButton: VFC<Props> = ({ onClick, children }) => {
   return (
     <StyledButton onClick={onClick}>
-      <StyledButtonText>{children}</StyledButtonText>
+      <Typography variant="body1">{children}</Typography>
     </StyledButton>
   );
 };

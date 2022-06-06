@@ -5,9 +5,10 @@ import OptionButton from "../atoms/OptionButton";
 
 interface Props {
   options: Array<Options>;
+  onClick(): void;
 }
 
-export const AnswerOptions: VFC<Props> = ({ options }) => {
+export const AnswerOptions: VFC<Props> = ({ options, onClick }) => {
   const row1 = options.slice(0, 2);
   const row2 = options.slice(2);
   return (
@@ -15,14 +16,14 @@ export const AnswerOptions: VFC<Props> = ({ options }) => {
       <Row align="center">
         {row1.map((answer) => (
           <Col>
-            <OptionButton onClick={() => {}}>{answer.answer}</OptionButton>
+            <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
           </Col>
         ))}
       </Row>
       <Row align="center">
         {row2.map((answer) => (
           <Col>
-            <OptionButton onClick={() => {}}>{answer.answer}</OptionButton>
+            <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
           </Col>
         ))}
       </Row>
