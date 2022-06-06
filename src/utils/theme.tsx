@@ -55,3 +55,5 @@ export const theme = {
     margin: 10
   }
 };
+
+export const iconStyle = { style: { color: theme.colors.secondary[100] } };

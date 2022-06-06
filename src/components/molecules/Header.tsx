@@ -6,12 +6,9 @@ import {
   faFaceMehBlank
 } from "@fortawesome/free-solid-svg-icons";
 import Typography from "../atoms/Typography";
-import { theme } from "../../utils";
+import { iconStyle } from "../../utils";
 
 export const Header: VFC = () => {
-  const iconStyle = {
-    style: { color: theme.colors.secondary[100] }
-  };
   return (
     <Row align="center" justify="center">
       <Col>

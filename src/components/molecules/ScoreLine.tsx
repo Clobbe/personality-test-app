@@ -1,52 +1,64 @@
+import { faFaceGrinStars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { VFC } from "react";
+import { Col, Container, Row } from "react-grid-system";
 import styled from "styled-components";
+import { iconStyle, theme } from "../../utils";
+import Spacing from "../atoms/Spacing";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   score: number;
+  lineWidth?: number | undefined;
 }
-const Wrapper = styled.div`
-  width: 400px;
-  flex-direction: row;
-`;
+
 const StyledLine = styled.div`
   display: flex;
-  width: 400px;
+  flex: 1;
   height: 3px;
-  background-color: #000;
+  background-color: ${theme.colors.grey[100]};
 `;
+
 const StyledScorePoint = styled.div<Props>`
-  display: flex;
+  display: inline-flex;
   position: absolute;
-  bottom: 22px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin-left: ${({ score }) => 400 - score}px;
-  background-color: #6faf08;
+  top: -12px;
+  width: 4px;
+  height: 25px;
+  margin-left: ${({ score, lineWidth }) => lineWidth! - score}px;
+  background-color: ${theme.colors.primary[100]};
   border: 2px solid #fff;
-`;
-const StyledExtremeValueLeft = styled.span`
-  display: inline-block;
-  margin-top: 10px;
-  position: relative;
-  left: -30px;
-`;
-const StyledExtremeValueRight = styled.span`
-  display: inline-block;
-  margin-top: 10px;
-  position: absolute;
-  left: 380px;
 `;
 
 const ScoreLine: VFC<Props> = ({ score = 0 }) => {
+  const lineWidth = document.getElementById("StyledLine")?.clientWidth;
+
+  const scaledScore = lineWidth! * (score / lineWidth!);
+  console.log(scaledScore);
+
+  console.log(lineWidth);
   return (
-    <Wrapper>
-      <StyledLine>
-        <StyledScorePoint score={score} />
-      </StyledLine>
-      <StyledExtremeValueLeft>😶 Introvert</StyledExtremeValueLeft>
-      <StyledExtremeValueRight>🤩 Extrovert</StyledExtremeValueRight>
-    </Wrapper>
+    <Container>
+      <Row align="center" justify="center">
+        <StyledLine id="StyledLine">
+          <StyledScorePoint score={scaledScore} lineWidth={lineWidth} />
+        </StyledLine>
+      </Row>
+      <Spacing spacing={3} />
+      <Row justify="around" align="center">
+        <Col>
+          <Row align="center">
+            <FontAwesomeIcon icon={faFaceGrinStars} {...iconStyle} />
+          </Row>
+          <Row>Introvert</Row>
+        </Col>
+        <Col>
+          <Row justify="end">
+            <FontAwesomeIcon icon={faFaceGrinStars} {...iconStyle} />
+          </Row>
+          <Row justify="end">Extrovert</Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 export default ScoreLine;
