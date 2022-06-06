@@ -7,12 +7,10 @@ import AppNavigator from "./navigation";
 const App: VFC = () => {
   setConfiguration({ gutterWidth: 24 });
   return (
-    <>
-      <Container>
-        <Header />
-        <AppNavigator />
-      </Container>
-    </>
+    <Container>
+      <Header />
+      <AppNavigator />
+    </Container>
   );
 };
 

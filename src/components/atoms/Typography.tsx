@@ -47,7 +47,7 @@ export const StyledTypography = css<ITypography>`
       text-align: ${align};
     `}
   letter-spacing: -2%;
-  font-family: ${({ fontFamily }) => fontFamily};
+  font-family: ${theme.font};
 `;
 
 const StyledH1 = styled.h1<ITypography>`

@@ -1,39 +1,35 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
+import { theme } from "../../utils";
 
-interface IOptionButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  selected?: boolean;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value?: number;
   onClick?: () => void;
 }
 
-const StyledButton = styled.button<IOptionButton>`
+const StyledButton = styled.button<Props>`
   text-align: center;
   min-width: 150px;
-  margin: 50px;
-  padding: 10px 5px 10px 5px;
-  background-color: ${({ selected }) => (selected ? "red" : "#f0ffd9")};
-  border: ${({ selected }) =>
-    selected ? "2px solid #4c6129" : "2px solid #b1d37c"};
-  border-radius: 5px;
+  margin: ${theme.spacing.margin}px;
+  padding: 15px 20px;
+  background-color: ${theme.colors.green[10]};
+  border: ${`2px solid ${theme.colors.green[100]}`};
+  border-radius: ${theme.spacing.radius}px;
   :hover {
-    border: 2px solid #4a7505;
+    border: ${`2px solid ${theme.colors.green[80]}`};
+    background-color: ${theme.colors.green[20]};
   }
 `;
 
 const StyledButtonText = styled.div`
-  font-family: sans-serif;
+  font-family: ${theme.font};
   size: 16px;
-  color: #88888;
+  color: ${theme.colors.grey[80]};
 `;
 
-const OptionButton: VFC<IOptionButton> = ({
-  selected = false,
-  onClick,
-  children,
-}) => {
+const OptionButton: VFC<Props> = ({ onClick, children }) => {
   return (
-    <StyledButton onClick={onClick} selected={selected}>
+    <StyledButton onClick={onClick}>
       <StyledButtonText>{children}</StyledButtonText>
     </StyledButton>
   );

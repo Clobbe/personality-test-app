@@ -6,7 +6,7 @@ import { theme } from "../../utils/theme";
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   loading?: boolean;
-  radius?: string | number;
+  radius?: number;
   backgroundColor?: string;
 }
 
@@ -30,15 +30,15 @@ const StyledButton = styled.button<Props>`
 
 const PrimaryButton: VFC<Props> = ({
   children,
-  loading,
   disabled = false,
+  radius,
   onClick,
   ...props
 }) => {
   return (
     <StyledButton
       backgroundColor={theme.colors.primary[100]}
-      radius={theme.spacing.radius}
+      radius={radius}
       disabled={disabled}
       onClick={!disabled ? onClick : undefined}
       {...props}

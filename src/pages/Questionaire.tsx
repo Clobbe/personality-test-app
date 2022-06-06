@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, VFC } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import { useHistory } from "react-router-dom";
 import Card from "../components/atoms/Card";
 import OptionButton from "../components/atoms/OptionButton";
+import { AnswerOptions } from "../components/molecules/AnswerOptions";
+import { QuestionHeader } from "../components/molecules/QuestionHeader";
+import { QuestionWithAnswers } from "../types";
 
-const Questionaire = () => {
+const Questionaire: VFC = () => {
   //TODO :: refactor into using component composition instead
   //TODO :: refactor this to fetch questions from context
   //TODO :: refactor score-keeping to use a context instead
   // -- export a function from the context instead...
   //TODO :: add function to context to store score in Firebase
 
-  const questionsAndAnswersFromBackend = [
+  const questionsAndAnswersFromBackend: QuestionWithAnswers[] = [
     {
       question:
         "You’re really busy at work and a colleague is telling you their life story and personal woes. You:",
@@ -114,6 +117,7 @@ const Questionaire = () => {
   const [score, setScore] = useState(0);
   const history = useHistory();
 
+  //TODO :: refactor this func out to context
   const updateScoreHandler = (weight: number) => {
     const s = score + weight;
     setScore(s);
@@ -129,61 +133,42 @@ const Questionaire = () => {
     }
   };
   return (
-    <Container>
-      <Card>
-        <Row>
-          <Col>
-            <h4>Question {pageIndex + 1}:</h4>
-            <h2>{questions[pageIndex]}</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h4>Select an answer:</h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <OptionButton
-              onClick={() =>
-                updateScoreHandler(answers[pageIndex][0]["weight"])
-              }
-            >
-              {answers[pageIndex][0]["answer"]}
-            </OptionButton>
-          </Col>
-          <Col>
-            <OptionButton
-              onClick={() =>
-                updateScoreHandler(answers[pageIndex][1]["weight"])
-              }
-            >
-              {answers[pageIndex][1]["answer"]}
-            </OptionButton>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <OptionButton
-              onClick={() =>
-                updateScoreHandler(answers[pageIndex][2]["weight"])
-              }
-            >
-              {answers[pageIndex][2]["answer"]}
-            </OptionButton>
-          </Col>
-          <Col>
-            <OptionButton
-              onClick={() =>
-                updateScoreHandler(answers[pageIndex][3]["weight"])
-              }
-            >
-              {answers[pageIndex][3]["answer"]}
-            </OptionButton>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
+    <Card>
+      <QuestionHeader index={pageIndex} question={questions[pageIndex]} />
+      <AnswerOptions options={questionsAndAnswersFromBackend[0].options} />
+      {/* <Row align="center">
+        <Col>
+          <OptionButton
+            onClick={() => updateScoreHandler(answers[pageIndex][0]["weight"])}
+          >
+            {answers[pageIndex][0]["answer"]}
+          </OptionButton>
+        </Col>
+        <Col>
+          <OptionButton
+            onClick={() => updateScoreHandler(answers[pageIndex][1]["weight"])}
+          >
+            {answers[pageIndex][1]["answer"]}
+          </OptionButton>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <OptionButton
+            onClick={() => updateScoreHandler(answers[pageIndex][2]["weight"])}
+          >
+            {answers[pageIndex][2]["answer"]}
+          </OptionButton>
+        </Col>
+        <Col>
+          <OptionButton
+            onClick={() => updateScoreHandler(answers[pageIndex][3]["weight"])}
+          >
+            {answers[pageIndex][3]["answer"]}
+          </OptionButton>
+        </Col>
+      </Row> */}
+    </Card>
   );
 };
 

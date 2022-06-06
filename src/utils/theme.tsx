@@ -1,5 +1,5 @@
 export const theme = {
-  font: "Roboto",
+  font: "Fira Code",
   colors: {
     primary: {
       100: "#8BAAAD",
@@ -50,8 +50,8 @@ export const theme = {
   spacing: {
     factor: 8,
     radius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingHorizontal: 40,
+    paddingVertical: 35,
     margin: 10
   }
 };
