@@ -5,7 +5,7 @@ import {
   faFaceGrinStars,
   faFaceMehBlank
 } from "@fortawesome/free-solid-svg-icons";
-import Typography from "../atoms/Typography";
+import { Typography } from "../atoms";
 import { iconStyle } from "../../utils";
 
 export const Header: VFC = () => {

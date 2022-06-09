@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import Typography from "../components/atoms/Typography";
+import { Typography } from "../components/atoms";
 import Index from "../pages/Index";
 import Questionaire from "../pages/Questionaire";
 import Result from "../pages/Result";

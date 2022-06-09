@@ -15,8 +15,6 @@ const StyledSpacer = styled.div<Props>`
     `};
 `;
 
-const Spacing: VFC<Props> = ({ horizontal, spacing = 1 }) => (
+export const Spacing: VFC<Props> = ({ horizontal, spacing = 1 }) => (
   <StyledSpacer horizontal={horizontal} spacing={spacing} />
 );
-
-export default Spacing;

@@ -1,10 +1,10 @@
 import { faFaceGrinStars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { VFC } from "react";
-import { Col, Container, Row } from "react-grid-system";
+import { Container, Row, Col } from "react-grid-system";
 import styled from "styled-components";
 import { iconStyle, theme } from "../../utils";
-import Spacing from "../atoms/Spacing";
+import { Spacing } from "../atoms";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   score: number;
@@ -29,7 +29,7 @@ const StyledScorePoint = styled.div<Props>`
   border: 2px solid #fff;
 `;
 
-const ScoreLine: VFC<Props> = ({ score = 0 }) => {
+export const ScoreLine: VFC<Props> = ({ score = 0 }) => {
   const lineWidth = document.getElementById("StyledLine")?.clientWidth;
 
   const scaledScore = lineWidth! * (score / lineWidth!);
@@ -61,4 +61,3 @@ const ScoreLine: VFC<Props> = ({ score = 0 }) => {
     </Container>
   );
 };
-export default ScoreLine;

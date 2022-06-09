@@ -1,7 +1,7 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
 import { theme } from "../../utils";
-import Typography from "./Typography";
+import { Typography } from "../atoms";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value?: number;
@@ -22,12 +22,10 @@ const StyledButton = styled.button<Props>`
   }
 `;
 
-const OptionButton: VFC<Props> = ({ onClick, children }) => {
+export const OptionButton: VFC<Props> = ({ onClick, children }) => {
   return (
     <StyledButton onClick={onClick}>
       <Typography variant="body1">{children}</Typography>
     </StyledButton>
   );
 };
-
-export default OptionButton;

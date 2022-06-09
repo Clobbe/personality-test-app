@@ -1,7 +1,7 @@
 import React, { VFC } from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../utils/theme";
-import Typography from "../atoms/Typography";
+import { Typography } from "../atoms";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
@@ -27,7 +27,7 @@ const StyledButton = styled.button<Props>`
     `}
 `;
 
-const SecondaryButton: VFC<Props> = ({ children, radius, ...props }) => {
+export const SecondaryButton: VFC<Props> = ({ children, radius, ...props }) => {
   return (
     <StyledButton radius={radius} {...props}>
       <Typography
@@ -40,5 +40,3 @@ const SecondaryButton: VFC<Props> = ({ children, radius, ...props }) => {
     </StyledButton>
   );
 };
-
-export default SecondaryButton;

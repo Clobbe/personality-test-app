@@ -1,8 +1,8 @@
 import { VFC } from "react";
-import { Container, Row, Col } from "react-grid-system";
+import { Row, Col } from "react-grid-system";
 import { useLocation } from "react-router-dom";
-import Card from "../components/atoms/Card";
-import ScoreLine from "../components/molecules/ScoreLine";
+import { Card } from "../components/atoms";
+import { ScoreLine } from "../components/molecules";
 
 type LocationState = {
   score: number;

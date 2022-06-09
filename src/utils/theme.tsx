@@ -49,7 +49,7 @@ export const theme = {
   },
   spacing: {
     factor: 8,
-    radius: 20,
+    radius: 15,
     paddingHorizontal: 40,
     paddingVertical: 35,
     margin: 10

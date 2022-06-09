@@ -1,8 +1,7 @@
 import React, { VFC } from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../utils/theme";
-import Spacing from "../atoms/Spacing";
-import Typography from "../atoms/Typography";
+import { Spacing, Typography } from "../atoms/";
 
 type FieldVariant = "text" | "email";
 
@@ -77,7 +76,7 @@ const StyledErrorMsg = styled(Typography)`
   color: ${theme.colors.red[100]};
 `;
 
-const TextInput: VFC<Props> = ({
+export const TextInput: VFC<Props> = ({
   title,
   placeholder,
   borderColor,
@@ -107,5 +106,3 @@ const TextInput: VFC<Props> = ({
     </>
   );
 };
-
-export default TextInput;

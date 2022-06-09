@@ -1,7 +1,7 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
-import Typography from "../atoms/Typography";
-import { theme } from "../../utils/theme";
+import { Typography } from "../atoms";
+import { theme } from "../../utils";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
@@ -28,7 +28,7 @@ const StyledButton = styled.button<Props>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "allowed")};
 `;
 
-const PrimaryButton: VFC<Props> = ({
+export const PrimaryButton: VFC<Props> = ({
   children,
   disabled = false,
   radius,
@@ -49,5 +49,3 @@ const PrimaryButton: VFC<Props> = ({
     </StyledButton>
   );
 };
-
-export default PrimaryButton;

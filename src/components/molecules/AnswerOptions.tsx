@@ -1,7 +1,7 @@
 import { VFC } from "react";
-import { Col, Row } from "react-grid-system";
+import { Col, Container, Row } from "react-grid-system";
 import { Options } from "../../types/questionsAndAnswers";
-import OptionButton from "../atoms/OptionButton";
+import { OptionButton } from "../molecules";
 
 interface Props {
   options: Array<Options>;
@@ -12,7 +12,7 @@ export const AnswerOptions: VFC<Props> = ({ options, onClick }) => {
   const row1 = options.slice(0, 2);
   const row2 = options.slice(2);
   return (
-    <>
+    <Container>
       <Row align="center">
         {row1.map((answer) => (
           <Col>
@@ -27,6 +27,6 @@ export const AnswerOptions: VFC<Props> = ({ options, onClick }) => {
           </Col>
         ))}
       </Row>
-    </>
+    </Container>
   );
 };

@@ -1,11 +1,12 @@
 import React, { useState, VFC } from "react";
 import { Row, Col } from "react-grid-system";
 import { useHistory } from "react-router-dom";
-import Card from "../components/atoms/Card";
-import Spacing from "../components/atoms/Spacing";
-import { AnswerOptions } from "../components/molecules/AnswerOptions";
-import PrimaryButton from "../components/molecules/PrimaryButton";
-import { QuestionHeader } from "../components/molecules/QuestionHeader";
+import { Card, Spacing } from "../components/atoms";
+import {
+  AnswerOptions,
+  PrimaryButton,
+  QuestionHeader
+} from "../components/molecules";
 import { QuestionWithAnswers } from "../types";
 
 const Questionaire: VFC = () => {

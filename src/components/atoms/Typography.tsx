@@ -25,7 +25,7 @@ type TextVariant =
   | "input-error"
   | undefined;
 
-interface ITypography
+interface Props
   extends React.HTMLProps<
     | HTMLParagraphElement
     | HTMLHeadingElement
@@ -38,7 +38,7 @@ interface ITypography
   fontFamily?: string;
 }
 
-export const StyledTypography = css<ITypography>`
+export const StyledTypography = css<Props>`
   display: block;
   color: ${({ color }) => color || theme.colors.grey[100]};
   ${({ align }) =>
@@ -50,97 +50,97 @@ export const StyledTypography = css<ITypography>`
   font-family: ${theme.font};
 `;
 
-const StyledH1 = styled.h1<ITypography>`
+const StyledH1 = styled.h1<Props>`
   ${StyledTypography};
 
   font-size: 36px;
   font-weight: 800;
   line-height: 40px;
 `;
-const StyledH2 = styled.h2<ITypography>`
+const StyledH2 = styled.h2<Props>`
   ${StyledTypography};
   font-size: 28px;
   font-weight: 800;
   line-height: 32px;
 `;
-const StyledH3 = styled.h3<ITypography>`
+const StyledH3 = styled.h3<Props>`
   ${StyledTypography};
   font-size: 24px;
   line-height: 32px;
   font-weight: 800;
 `;
-const StyledH4 = styled.h4<ITypography>`
+const StyledH4 = styled.h4<Props>`
   ${StyledTypography};
   font-size: 24px;
   line-height: 28px;
   font-weight: 400;
 `;
-const StyledH5 = styled.h5<ITypography>`
+const StyledH5 = styled.h5<Props>`
   ${StyledTypography};
   font-size: 16px;
 `;
-const StyledH6 = styled.h6<ITypography>`
+const StyledH6 = styled.h6<Props>`
   ${StyledTypography};
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
 `;
-const StyledBody1 = styled.span<ITypography>`
+const StyledBody1 = styled.span<Props>`
   ${StyledTypography};
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
 `;
-const StyledBody1SemiBold = styled.span<ITypography>`
+const StyledBody1SemiBold = styled.span<Props>`
   ${StyledTypography};
   font-size: 16px;
   line-height: 18px;
   font-weight: 600;
 `;
-const StyledBody2 = styled.span<ITypography>`
+const StyledBody2 = styled.span<Props>`
   ${StyledTypography};
   font-size: 14px;
   line-height: 16px;
   font-weight: 400;
 `;
-const StyledBody2ExtraBold = styled.span<ITypography>`
+const StyledBody2ExtraBold = styled.span<Props>`
   ${StyledTypography};
   font-size: 14px;
   line-height: 16px;
   font-weight: 800;
 `;
-const StyledBody3 = styled.span<ITypography>`
+const StyledBody3 = styled.span<Props>`
   ${StyledTypography};
   font-size: 12px;
   line-height: 14px;
   font-weight: 400;
 `;
-const StyledParagraph = styled.p<ITypography>`
+const StyledParagraph = styled.p<Props>`
   ${StyledTypography};
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
 `;
-const StyledParagraphSemiBold = styled.p<ITypography>`
+const StyledParagraphSemiBold = styled.p<Props>`
   ${StyledTypography};
   font-size: 16px;
   line-height: 22px;
   font-weight: 600;
 `;
-const StyledLabelDefault = styled.label<ITypography>`
+const StyledLabelDefault = styled.label<Props>`
   ${StyledTypography};
   font-size: 16px;
   line-height: 22px;
   font-weight: 600;
 `;
-const StyledLabelLarge = styled.label<ITypography>`
+const StyledLabelLarge = styled.label<Props>`
   ${StyledTypography};
   font-size: 24px;
   line-height: 28px;
   font-weight: 600;
 `;
 
-const StyledInputLabel = styled.label<ITypography>`
+const StyledInputLabel = styled.label<Props>`
   ${StyledTypography};
   font-size: 12px;
   font-weight: normal;
@@ -149,19 +149,19 @@ const StyledInputLabel = styled.label<ITypography>`
   padding-bottom: ${theme.spacing.factor / 2}px;
 `;
 
-const StyledButtonLabel = styled.span<ITypography>`
+const StyledButtonLabel = styled.span<Props>`
   ${StyledTypography};
   font-size: 14px;
   font-weight: bold;
 `;
 
-const StyledStatusMessage = styled.span<ITypography>`
+const StyledStatusMessage = styled.span<Props>`
   ${StyledTypography};
   font-size: 14px;
   font-weight: bold;
 `;
 
-const StyledInputError = styled.span<ITypography>`
+const StyledInputError = styled.span<Props>`
   color: red;
   display: block;
   font-size: 12px;
@@ -212,7 +212,7 @@ const getComponent = (variant: TextVariant): VFC => {
   }
 };
 
-const Typography: React.FC<ITypography> = ({
+export const Typography: VFC<Props> = ({
   children,
   variant = "body1",
   ...props
@@ -224,4 +224,3 @@ const Typography: React.FC<ITypography> = ({
 
   return <Component {...typoProps}>{children}</Component>;
 };
-export default Typography;

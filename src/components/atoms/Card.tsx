@@ -14,8 +14,6 @@ const StyledCard = styled.div<ICard>`
   border: 2px solid ${theme.colors.primary[60]};
 `;
 
-const Card: VFC<ICard> = ({ children }) => {
+export const Card: VFC<ICard> = ({ children }) => {
   return <StyledCard>{children}</StyledCard>;
 };
-
-export default Card;
