@@ -1,20 +1,19 @@
 import React, { VFC } from "react";
 import styled from "styled-components";
+import { theme } from "../../utils";
 
 interface ICard extends React.HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
 const StyledCard = styled.div<ICard>`
-  max-width: 800px;
-  margin: 10% auto auto;
-  padding: 20px 50px 20px 50px;
-  border-radius: 10px;
-  border: 1px solid rgb(186, 202, 168);
+  background-color: ${theme.colors.grey[0]};
+  padding: ${theme.spacing.paddingVertical}px
+    ${theme.spacing.paddingHorizontal}px;
+  border-radius: ${theme.spacing.radius}px;
+  border: 2px solid ${theme.colors.primary[60]};
 `;
 
-const Card: VFC<ICard> = ({ children }) => {
+export const Card: VFC<ICard> = ({ children }) => {
   return <StyledCard>{children}</StyledCard>;
 };
-
-export default Card;

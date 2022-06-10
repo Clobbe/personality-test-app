@@ -1,38 +1,21 @@
-import { Container, Row, Col } from "react-grid-system";
-import { Link } from "react-router-dom";
-import Button from "../components/atoms/Button";
-import Card from "../components/atoms/Card";
+import { VFC } from "react";
+import { Row } from "react-grid-system";
+import { useHistory } from "react-router-dom";
+import { Card } from "../components/atoms";
+import { PrimaryButton } from "../components/molecules";
+import { IntroductionText } from "../components/organisms";
 
-const Index = () => {
+const Index: VFC = () => {
+  const history = useHistory();
   return (
-    <Container>
-      <Card>
-        <Row>
-          <Col>
-            <p>
-              With this app you get to answer 5 questions that will tell if
-              you're leaning more towards introverted ( 😶 ) or towards
-              {/* TODO :: refactor emojis to use fontawesome instead...*/}
-              extroverted ( 🤩 ) kind of person. <br />
-            </p>
-            <p>
-              Or perhaps somewhere in between 😉 <br /> Good luck and have fun!
-            </p>
-            <p>
-              <b>Tip!</b> on each question, pick the answer that first align
-              most with your beliefs and gut feeling.
-            </p>
-          </Col>
-        </Row>
-        <Row align="center">
-          <Col>
-            <Link to="/questionaire">
-              <Button>Get Started</Button>
-            </Link>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
+    <Card>
+      <IntroductionText />
+      <Row justify="end">
+        <PrimaryButton onClick={() => history.push("/questionaire")}>
+          Get Started
+        </PrimaryButton>
+      </Row>
+    </Card>
   );
 };
 
