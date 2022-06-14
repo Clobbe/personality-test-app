@@ -7,3 +7,8 @@ export interface QuestionWithAnswers {
   question: string;
   options: Array<Options>;
 }
+
+export interface Answer {
+  question: string;
+  score: string;
+}
