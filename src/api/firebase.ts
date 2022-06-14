@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, addDoc, collection } from "firebase/firestore";
+import {
+  getFirestore,
+  query,
+  getDocsFromServer,
+  addDoc,
+  collection,
+  QuerySnapshot
+} from "firebase/firestore";
 import { QuestionWithAnswers, Answer } from "../types";
 
 const firebaseConfig = {
@@ -14,62 +21,66 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-export const getQuestions = async (): Promise<T> => {
-  try {
-    const querySnapshot: Firebase.QuerySnapshot = await getDocs("questions");
+export const getQuestions = async () => {
+  // try {
+  const querySnapshot = await query(collection(db, "questions"));
 
-    const data: StringMap = {};
-    querySnapshot;
+  const questionsFromDB = getDocsFromServer(querySnapshot);
 
-    querySnapshot.forEach(
-      (documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot) => {
-        const id = documentSnapshot.id;
-        data[id] = documentSnapshot.data() as INote | IQuestion;
-        data[id].key = id;
-      }
-    );
-    return data;
-  } catch (e) {
-    return Promise.reject(e);
-  }
+  // const data = {};
+
+  console.log(querySnapshot.firestore.toJSON());
+  console.log(questionsFromDB);
+
+  // querySnapshot.forEach(
+  //   (documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot) => {
+  //     const id = documentSnapshot.id;
+  //     data[id] = documentSnapshot.data() as INote | IQuestion;
+  //     data[id].key = id;
+  //   }
+  //   );
+  //   return data;
+  // } catch (e) {
+  //   return Promise.reject(e);
+  // }
 };
 
-export async function getCollection(
-  collection: TCollectionTypes
-): Promise<StringMap> {
-  try {
-    const querySnapshot: FirebaseFirestoreTypes.QuerySnapshot =
-      await FIRESTORE().collection(collection).get();
-    const data: StringMap = {};
-    querySnapshot.forEach(
-      (documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot) => {
-        const id = documentSnapshot.id;
-        data[id] = documentSnapshot.data() as INote | IQuestion;
-        data[id].key = id;
-      }
-    );
-    return data;
-  } catch (e) {
-    return Promise.reject(e);
-  }
-}
+// export async function getCollection(
+//   collection: TCollectionTypes
+// ): Promise<StringMap> {
+//   try {
+//     const querySnapshot: FirebaseFirestoreTypes.QuerySnapshot =
+//       await FIRESTORE().collection(collection).get();
+//     const data: StringMap = {};
+//     querySnapshot.forEach(
+//       (documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot) => {
+//         const id = documentSnapshot.id;
+//         data[id] = documentSnapshot.data() as INote | IQuestion;
+//         data[id].key = id;
+//       }
+//     );
+//     return data;
+//   } catch (e) {
+//     return Promise.reject(e);
+//   }
+// }
 
-export const getDocument = async (
-  collection: TCollectionTypes,
-  document: string
-): Promise<FirebaseFirestoreTypes.DocumentData> => {
-  try {
-    const documentSnapshot = await FIRESTORE()
-      .collection(collection)
-      .doc(document)
-      .get();
-    const data = documentSnapshot.data() || {};
-    data.key = documentSnapshot && documentSnapshot.id;
-    return data;
-  } catch (e) {
-    return Promise.reject(e);
-  }
-};
+// export const getDocument = async (
+//   collection: TCollectionTypes,
+//   document: string
+// ): Promise<FirebaseFirestoreTypes.DocumentData> => {
+//   try {
+//     const documentSnapshot = await FIRESTORE()
+//       .collection(collection)
+//       .doc(document)
+//       .get();
+//     const data = documentSnapshot.data() || {};
+//     data.key = documentSnapshot && documentSnapshot.id;
+//     return data;
+//   } catch (e) {
+//     return Promise.reject(e);
+//   }
+// };
 
 export const saveDocument = async (data: Answer): Promise<void> => {
   try {
