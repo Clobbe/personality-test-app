@@ -4,6 +4,7 @@ export interface Options {
 }
 
 export interface QuestionWithAnswers {
+  key: string;
   question: string;
   options: Array<Options>;
 }
