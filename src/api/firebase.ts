@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, addDoc, collection, getDocs } from "firebase/firestore";
-import { Answer } from "../types";
+import { IAnswer } from "../types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnv9FQeEewC_ybt_9_ILRfw024keJr1C0",
@@ -24,13 +24,13 @@ export const getQuestions = async () => {
       data[id] = doc.data();
       data[id].key = id;
     });
-    return data;
+    return Promise.resolve(data);
   } catch (e) {
     return Promise.reject(e);
   }
 };
 
-export const saveAnswers = async (data: Answer): Promise<void> => {
+export const saveAnswers = async (data: IAnswer): Promise<void> => {
   try {
     await addDoc(collection(db, "answers"), data);
   } catch (e) {

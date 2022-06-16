@@ -9,7 +9,7 @@ export interface QuestionWithAnswers {
   options: Array<Options>;
 }
 
-export interface Answer {
+export interface IAnswer {
   question: string;
   score: string;
 }
