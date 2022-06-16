@@ -5,7 +5,7 @@ import { Header } from "./components/molecules/Header";
 import AppNavigator from "./navigation";
 
 const App: VFC = () => {
-  setConfiguration({ gutterWidth: 24 });
+  setConfiguration({ gutterWidth: 48 });
   return (
     <Container>
       <Header />
