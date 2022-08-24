@@ -9,8 +9,8 @@ type LocationState = {
 };
 
 const Results: VFC = () => {
-  // const location = useLocation();
-  // const questionScore = (location.state as LocationState).score;
+  const location = useLocation();
+  const questionScore = (location.state as LocationState).score;
   //?? :: add animation to display the result?
   //TODO :: refactor do pull score from context instead of as req-params...
 
@@ -25,7 +25,7 @@ const Results: VFC = () => {
       </Row>
       <Row style={{ marginTop: 20 }}>
         <Col>
-          <ScoreLine score={100} />
+          <ScoreLine score={questionScore} />
         </Col>
       </Row>
     </Card>

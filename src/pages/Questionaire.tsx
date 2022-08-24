@@ -21,9 +21,10 @@ const Questionaire: VFC = () => {
 
   //TODO :: refactor this func out to context
   const updateScoreHandler = (score: number) => {
+    console.log(tally);
     const s = tally + score;
+
     setTally(s);
-    console.log("Score: " + s);
     if (pageIndex === questionsAndAnswers.length - 1) {
       history.push({
         pathname: "/result",
@@ -34,7 +35,7 @@ const Questionaire: VFC = () => {
     } else {
       setTimeout(() => {
         updatePageIndex(pageIndex + 1);
-      }, 500);
+      }, 200);
     }
   };
 

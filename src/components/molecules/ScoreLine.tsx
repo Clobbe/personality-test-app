@@ -1,7 +1,7 @@
+import React, { useCallback, useEffect, useState, VFC } from "react";
+import { Container, Row, Col } from "react-grid-system";
 import { faFaceGrinStars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { VFC } from "react";
-import { Container, Row, Col } from "react-grid-system";
 import styled from "styled-components";
 import { iconStyle, theme } from "../../utils";
 import { Spacing } from "../atoms";
@@ -24,23 +24,32 @@ const StyledScorePoint = styled.div<Props>`
   top: -12px;
   width: 4px;
   height: 25px;
-  margin-left: ${({ score, lineWidth }) => lineWidth! - score}px;
+  margin-left: ${({ score }) => score}px;
   background-color: ${theme.colors.primary[100]};
   border: 2px solid #fff;
 `;
 
-export const ScoreLine: VFC<Props> = ({ score = 0 }) => {
-  const lineWidth = document.getElementById("StyledLine")?.clientWidth;
+export const ScoreLine: VFC<Props> = ({ score }) => {
+  const [lineWidth, setLineWidth] = useState(0);
 
-  const scaledScore = lineWidth! * (score / lineWidth!);
-  console.log(scaledScore);
+  useEffect(() => {
+    const styledLineWidth = document?.getElementById("StyledLine")
+      ?.clientWidth as number;
 
-  console.log(lineWidth);
+    setLineWidth(styledLineWidth);
+  }, []);
+
+  console.log("score", score);
+  console.log("lineWidth", lineWidth);
+
+  const positionScore = score / 12;
+  console.log("positionScore", positionScore);
+
   return (
     <Container>
       <Row align="center" justify="center">
         <StyledLine id="StyledLine">
-          <StyledScorePoint score={scaledScore} lineWidth={lineWidth} />
+          <StyledScorePoint score={positionScore} />
         </StyledLine>
       </Row>
       <Spacing spacing={3} />

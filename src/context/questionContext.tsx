@@ -41,7 +41,7 @@ export const QuestionProvider = ({ children }: any): ReactElement => {
         questions: questionsFromFirebase
       });
     }
-  }, [getQuestions]);
+  }, []);
 
   useEffect(() => {
     getQuestionsFromFirebase();
