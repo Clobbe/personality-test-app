@@ -15,14 +15,14 @@ export const AnswerOptions: VFC<Props> = ({ options, onClick }) => {
     <Container>
       <Row align="center">
         {row1.map((answer) => (
-          <Col>
+          <Col key={answer.answer}>
             <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
           </Col>
         ))}
       </Row>
       <Row align="center">
         {row2.map((answer) => (
-          <Col>
+          <Col key={answer.answer}>
             <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
           </Col>
         ))}

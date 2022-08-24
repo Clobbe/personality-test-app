@@ -10,12 +10,10 @@ import React, {
 import { QuestionWithAnswers } from "../types";
 
 type TContextValue = {
-  getQuestions(): Promise<void>;
   questions: Array<QuestionWithAnswers>;
 };
 
 const initialState: TContextValue = {
-  getQuestions: async () => {},
   questions: [
     {
       key: "no questions fetched",
@@ -35,30 +33,24 @@ export const QuestionContext = createContext(initialState);
 export const QuestionProvider = ({ children }: any): ReactElement => {
   const [state, setState] = useState(initialState);
 
-  const getQuestionsFromFirebase = useCallback(async (): Promise<void> => {
+  const getQuestionsFromFirebase = useCallback(async () => {
     const questionsFromFirebase = await getQuestions();
 
     if (questionsFromFirebase) {
       setState({
-        ...state,
         questions: questionsFromFirebase
       });
     }
-  }, [state]);
+  }, [getQuestions]);
 
   useEffect(() => {
-    getQuestionsFromFirebase().then();
+    getQuestionsFromFirebase();
   }, [getQuestionsFromFirebase]);
-
-  const contextValue = {
-    ...state,
-    getQuestionsFromFirebase() {}
-  };
 
   QuestionContext.displayName = "QuestionProvider";
 
   return (
-    <QuestionContext.Provider value={contextValue}>
+    <QuestionContext.Provider value={state}>
       {children}
     </QuestionContext.Provider>
   );
