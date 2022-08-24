@@ -1,3 +1,4 @@
+import { QuestionWithAnswers } from "./../types/questionsAndAnswers";
 import { initializeApp } from "firebase/app";
 import { getFirestore, addDoc, collection, getDocs } from "firebase/firestore";
 import { IAnswer } from "../types";
@@ -14,15 +15,13 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-export const getQuestions = async () => {
+export const getQuestions = async (): Promise<Array<QuestionWithAnswers>> => {
   try {
     const querySnapshot = await getDocs(collection(db, "questions"));
-    const data: any = {};
+    const data: any = [];
 
     querySnapshot.forEach((doc) => {
-      const id: string = doc.id;
-      data[id] = doc.data();
-      data[id].key = id;
+      data.push({ key: doc.id, ...doc.data() });
     });
     return Promise.resolve(data);
   } catch (e) {

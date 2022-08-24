@@ -5,25 +5,29 @@ import { OptionButton } from "../molecules";
 
 interface Props {
   options: Array<Options>;
-  onClick(): void;
+  sendScore: (score: number) => void;
 }
 
-export const AnswerOptions: VFC<Props> = ({ options, onClick }) => {
+export const AnswerOptions: VFC<Props> = ({ options, sendScore }) => {
   const row1 = options.slice(0, 2);
   const row2 = options.slice(2);
   return (
     <Container>
-      <Row align="center">
-        {row1.map((answer) => (
-          <Col>
-            <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
+      <Row align="center" justify="center">
+        {row1.map((option) => (
+          <Col key={option.answer}>
+            <OptionButton onClick={() => sendScore(option.score)}>
+              {option.answer}
+            </OptionButton>
           </Col>
         ))}
       </Row>
-      <Row align="center">
+      <Row align="center" justify="center">
         {row2.map((answer) => (
-          <Col>
-            <OptionButton onClick={onClick}>{answer.answer}</OptionButton>
+          <Col key={answer.answer}>
+            <OptionButton onClick={() => sendScore(answer.score)}>
+              {answer.answer}
+            </OptionButton>
           </Col>
         ))}
       </Row>
