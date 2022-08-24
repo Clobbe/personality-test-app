@@ -21,7 +21,7 @@ export const getQuestions = async (): Promise<Array<QuestionWithAnswers>> => {
     const data: any = [];
 
     querySnapshot.forEach((doc) => {
-      data.push({ key: doc.id, data: doc.data() });
+      data.push({ key: doc.id, ...doc.data() });
     });
     return Promise.resolve(data);
   } catch (e) {

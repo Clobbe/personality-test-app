@@ -8,52 +8,49 @@ import {
   QuestionHeader
 } from "../components/molecules";
 import { useQuestionContext } from "../context/questionContext";
-import { QuestionWithAnswers } from "../types";
 
 const Questionaire: VFC = () => {
-  //TODO :: refactor into using component composition instead
-
   //TODO :: refactor score-keeping to use a context instead
   // -- export a function from the context instead...
   //TODO :: add function to context to store score in Firebase
 
   const [pageIndex, updatePageIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const questions = useQuestionContext().questions;
-
-  console.log(pageIndex);
-
-  console.log([questions]);
+  const [tally, setTally] = useState(0);
+  const questionsAndAnswers = useQuestionContext().questions;
+  const history = useHistory();
 
   //TODO :: refactor this func out to context
-  // const updateScoreHandler = (weight: number) => {
-  //   const s = score + weight;
-  //   setScore(s);
-  //   if (pageIndex === questions.length - 1) {
-  //     history.push({
-  //       pathname: "/result",
-  //       state: {
-  //         score: score
-  //       }
-  //     });
-  //   } else {
-  //     updatePageIndex(pageIndex + 1);
-  //   }
-  // };
+  const updateScoreHandler = (score: number) => {
+    const s = tally + score;
+    setTally(s);
+    console.log("Score: " + s);
+    if (pageIndex === questionsAndAnswers.length - 1) {
+      history.push({
+        pathname: "/result",
+        state: {
+          score: score
+        }
+      });
+    } else {
+      setTimeout(() => {
+        updatePageIndex(pageIndex + 1);
+      }, 500);
+    }
+  };
 
   return (
     <Card>
       <Row>
-        {/* <Col>
+        <Col>
           <QuestionHeader
             index={pageIndex}
-            question={questions[pageIndex].question}
+            question={questionsAndAnswers[pageIndex].question}
           />
           <AnswerOptions
-            onClick={() => {}}
-            options={questions[pageIndex].options}
+            sendScore={updateScoreHandler}
+            options={questionsAndAnswers[pageIndex].options}
           />
-        </Col> */}
+        </Col>
       </Row>
       <Spacing spacing={5} />
       <Row justify="end">

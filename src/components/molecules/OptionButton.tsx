@@ -5,7 +5,7 @@ import { Typography } from "../atoms";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value?: number;
-  onClick?: () => void;
+  onClick?(): void;
 }
 
 const StyledButton = styled.button<Props>`

@@ -1,6 +1,6 @@
 export interface Options {
   answer: string;
-  weight: number;
+  score: number;
 }
 
 export interface QuestionWithAnswers {

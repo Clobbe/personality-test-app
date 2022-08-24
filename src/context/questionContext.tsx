@@ -21,7 +21,7 @@ const initialState: TContextValue = {
       options: [
         {
           answer: "no questions fetched",
-          weight: 1
+          score: 1
         }
       ]
     }
