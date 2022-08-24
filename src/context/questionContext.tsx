@@ -1,4 +1,3 @@
-import { getQuestions } from "../api/firebase";
 import React, {
   ReactElement,
   createContext,
@@ -7,6 +6,7 @@ import React, {
   useState,
   useCallback
 } from "react";
+import { getQuestions } from "../api/firebase";
 import { QuestionWithAnswers } from "../types";
 
 type TContextValue = {

@@ -8,37 +8,27 @@ import {
   QuestionHeader
 } from "../components/molecules";
 import { useQuestionContext } from "../context/questionContext";
+import { useResultContext } from "../context/resultsContext";
 
 const Questionaire: VFC = () => {
-  //TODO :: refactor score-keeping to use a context instead
-  // -- export a function from the context instead...
-  //TODO :: add function to context to store score in Firebase
-
   const [pageIndex, updatePageIndex] = useState(0);
-  const [tally, setTally] = useState(0);
   const questionsAndAnswers = useQuestionContext().questions;
+  const resultContext = useResultContext();
   const history = useHistory();
 
-  //TODO :: refactor this func out to context
   const updateScoreHandler = (score: number) => {
-    console.log(tally);
-    const s = tally + score;
+    resultContext.updateScore(score);
 
-    setTally(s);
     if (pageIndex === questionsAndAnswers.length - 1) {
       history.push({
-        pathname: "/result",
-        state: {
-          score: score
-        }
+        pathname: "/result"
       });
     } else {
       setTimeout(() => {
         updatePageIndex(pageIndex + 1);
-      }, 200);
+      }, 150);
     }
   };
-
   return (
     <Card>
       <Row>

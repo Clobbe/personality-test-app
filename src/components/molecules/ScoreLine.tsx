@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState, VFC } from "react";
+import React, { useEffect, useState, VFC } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import { faFaceGrinStars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { iconStyle, theme } from "../../utils";
 import { Spacing } from "../atoms";
+import { useResultContext } from "../../context/resultsContext";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   score: number;
@@ -30,6 +31,8 @@ const StyledScorePoint = styled.div<Props>`
 `;
 
 export const ScoreLine: VFC<Props> = ({ score }) => {
+  const resultContext = useResultContext();
+
   const [lineWidth, setLineWidth] = useState(0);
 
   useEffect(() => {
@@ -39,11 +42,8 @@ export const ScoreLine: VFC<Props> = ({ score }) => {
     setLineWidth(styledLineWidth);
   }, []);
 
-  console.log("score", score);
-  console.log("lineWidth", lineWidth);
-
-  const positionScore = score / 12;
-  console.log("positionScore", positionScore);
+  const positionScore =
+    (resultContext.score / resultContext.maxScore) * lineWidth;
 
   return (
     <Container>
