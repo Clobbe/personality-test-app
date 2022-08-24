@@ -14,44 +14,46 @@ type TContextValue = {
   questions: Array<QuestionWithAnswers>;
 };
 
-const initialState:TContextValue = {
+const initialState: TContextValue = {
   getQuestions: async () => {},
-  questions: [{
-    key: "no questions fetched",
-    question: "no questions fetched",
-    options: [{
-  answer: "no questions fetched",
-  weight: 1,
-}]
-}]
+  questions: [
+    {
+      key: "no questions fetched",
+      question: "no questions fetched",
+      options: [
+        {
+          answer: "no questions fetched",
+          weight: 1
+        }
+      ]
+    }
+  ]
 };
 
 export const QuestionContext = createContext(initialState);
 
-export const QuestionProvider = ({ children }:any): ReactElement => {
+export const QuestionProvider = ({ children }: any): ReactElement => {
   const [state, setState] = useState(initialState);
 
-const getQuestionsFromFirebase = useCallback(async (): Promise<void> => {
-    const questionsFromFirebase  = await getQuestions();
-    
+  const getQuestionsFromFirebase = useCallback(async (): Promise<void> => {
+    const questionsFromFirebase = await getQuestions();
+
     if (questionsFromFirebase) {
       setState({
         ...state,
-      questions: questionsFromFirebase
-      })    
+        questions: questionsFromFirebase
+      });
     }
-  },
-    [state],
-  )
-  
+  }, [state]);
+
   useEffect(() => {
     getQuestionsFromFirebase().then();
   }, [getQuestionsFromFirebase]);
 
   const contextValue = {
     ...state,
-    getQuestionsFromFirebase()
-  }
+    getQuestionsFromFirebase() {}
+  };
 
   QuestionContext.displayName = "QuestionProvider";
 
@@ -59,8 +61,7 @@ const getQuestionsFromFirebase = useCallback(async (): Promise<void> => {
     <QuestionContext.Provider value={contextValue}>
       {children}
     </QuestionContext.Provider>
-  )
-  }
+  );
+};
 
-
-export const useQuestionContext = () => useContext(QuestionContext)
+export const useQuestionContext = () => useContext(QuestionContext);
